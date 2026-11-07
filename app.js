@@ -110,15 +110,38 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // --- YAZI BOYUTU DİNAMİK ÖLÇEKLEME (HTML ROOT FONT-SIZE % CHANGE) ---
-  document.querySelectorAll('[data-scale]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const scale = btn.getAttribute('data-scale');
-      document.documentElement.setAttribute('data-scale', scale);
-      document.querySelectorAll('[data-scale]').forEach(b => {
-        b.setAttribute('aria-pressed', b.getAttribute('data-scale') === scale);
-      });
+  //document.querySelectorAll('[data-scale]').forEach(btn => {
+    //btn.addEventListener('click', () => {
+      //const scale = btn.getAttribute('data-scale');
+      //document.documentElement.setAttribute('data-scale', scale);
+      //document.querySelectorAll('[data-scale]').forEach(b => {
+        //b.setAttribute('aria-pressed', b.getAttribute('data-scale') === scale);
+      //});
+    //});
+  //});
+  
+  // --- YAZI BOYUTU AYARI ---
+const sizeButtons = document.querySelectorAll('.tsize');
+
+sizeButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    // Diğer boyut butonlarının durumunu sıfırla
+    sizeButtons.forEach(b => {
+      b.setAttribute('aria-pressed', 'false');
+      b.classList.remove('bg-sky-700', 'text-white'); // Aktif stil sınıfları
     });
+
+    // Tıklanan butonu aktif yap
+    btn.setAttribute('aria-pressed', 'true');
+    btn.classList.add('bg-sky-700', 'text-white');
+
+    // Seçilen ölçek oranını al (100, 115 veya 130)
+    const scale = btn.getAttribute('data-scale');
+
+    // Doğrudan body font boyutunu yüzde olarak değiştirerek tüm sayfayı büyüt
+    document.body.style.fontSize = scale + '%';
   });
+});
 
   // --- EKRAN OKUYUCU DOSTU MODAL YÖNETİMİ ---
   let lastFocusedElement = null;
