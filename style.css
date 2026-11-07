@@ -98,3 +98,7 @@ body {
   color: #ffffff !important;
   border-color: #0369a1 !important;
 }
+/* Tüm rem tabanlı Tailwind metinlerinin dinamik büyümesini sağlar */
+html {
+  transition: font-size 0.2s ease;
+}
