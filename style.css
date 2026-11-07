@@ -86,3 +86,15 @@ html[data-contrast="high"] :focus-visible {
 outline: 4px solid #00ffff !important; /* Cyan outline */
 outline-offset: 4px !important;
 }
+/* Yazı boyutu ölçeklendirmesinin tüm sayfa genelinde çalışması için */
+body {
+  font-size.inherit: true;
+  transition: font-size 0.2s ease;
+}
+
+/* Buton aktifken görnecek net renkler */
+.tbtn[aria-pressed="true"] {
+  background-color: #0369a1 !important; /* Koyu mavi */
+  color: #ffffff !important;
+  border-color: #0369a1 !important;
+}
