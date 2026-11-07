@@ -120,26 +120,27 @@ document.addEventListener('DOMContentLoaded', () => {
     //});
   //});
   
-  // --- YAZI BOYUTU AYARI ---
+ // --- YAZI BOYUTU AYARI (Dinamik Kök Font Boyutu) ---
 const sizeButtons = document.querySelectorAll('.tsize');
 
 sizeButtons.forEach(btn => {
   btn.addEventListener('click', () => {
-    // Diğer boyut butonlarının durumunu sıfırla
     sizeButtons.forEach(b => {
       b.setAttribute('aria-pressed', 'false');
-      b.classList.remove('bg-sky-700', 'text-white'); // Aktif stil sınıfları
+      b.classList.remove('bg-sky-700', 'text-white');
     });
 
-    // Tıklanan butonu aktif yap
     btn.setAttribute('aria-pressed', 'true');
     btn.classList.add('bg-sky-700', 'text-white');
 
-    // Seçilen ölçek oranını al (100, 115 veya 130)
-    const scale = btn.getAttribute('data-scale');
+    const scale = btn.getAttribute('data-scale'); // 100, 115, 130
+    
+    // Standart body font boyutu 16px kabul edilerek oranlanır
+    let baseFontSize = 16; 
+    if (scale === '115') baseFontSize = 18.4;
+    if (scale === '130') baseFontSize = 20.8;
 
-    // Doğrudan body font boyutunu yüzde olarak değiştirerek tüm sayfayı büyüt
-    document.body.style.fontSize = scale + '%';
+    document.documentElement.style.fontSize = baseFontSize + 'px';
   });
 });
 
